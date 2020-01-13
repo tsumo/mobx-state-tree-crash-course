@@ -1,10 +1,8 @@
 import React from 'react'
 import store from '../store'
-import { getSnapshot } from 'mobx-state-tree'
 
 store.addSpell('ct', 'Chill Touch', 10)
 store.addWizard('pu', 'Paula Undergun', 100)
-console.log(getSnapshot(store))
 
 const App: React.FC = () => {
   return (
