@@ -10,6 +10,7 @@ const useStyles = createUseStyles({
     display: 'inline-block',
     padding: '15px',
     margin: '30px',
+    lineHeight: 2,
   },
 })
 
