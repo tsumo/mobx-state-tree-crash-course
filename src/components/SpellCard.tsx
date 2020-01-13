@@ -1,5 +1,6 @@
 import React from 'react'
 import { TSpell } from '../models/spell'
+import Card from './Card'
 
 interface ISpellCardProps {
   spell: TSpell
@@ -9,9 +10,10 @@ const SpellCard: React.FC<ISpellCardProps> = props => {
   const { spell } = props
 
   return (
-    <p>
-      Spell name: {spell.name}, cost: {spell.cost}
-    </p>
+    <Card>
+      <p>Spell name: {spell.name}</p>
+      <p>cost: {spell.cost}</p>
+    </Card>
   )
 }
 
