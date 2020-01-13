@@ -1,9 +1,9 @@
-import { types } from 'mobx-state-tree'
+import { types, Instance } from 'mobx-state-tree'
 
-const Wizard = types
+const WizardModel = types
   .model({
-    name: '',
-    mana: 0,
+    name: types.optional(types.string, ''),
+    mana: types.optional(types.number, 0),
   })
   .actions(self => ({
     setName(newName: string) {
@@ -15,4 +15,7 @@ const Wizard = types
     },
   }))
 
-export default Wizard
+export interface IWizard extends Instance<typeof WizardModel> {}
+export type TWizard = typeof WizardModel.Type
+
+export default WizardModel

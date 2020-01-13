@@ -1,18 +1,23 @@
 import React from 'react'
-import store from '../store'
-
-store.addSpell('ct', 'Chill Touch', 10)
-store.addWizard('pu', 'Paula Undergun', 100)
+import { useRootData } from '../tools/useRootData'
+import WizardCard from './WizardCard'
+import SpellCard from './SpellCard'
 
 const App: React.FC = () => {
+  const { wizards, spells } = useRootData(store => ({
+    wizards: store.wizards,
+    spells: store.spells,
+  }))
+
   return (
-    <div>
-      <header>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <>
+      {wizards.map(wizard => (
+        <WizardCard key={wizard.name} wizard={wizard} />
+      ))}
+      {spells.map(spell => (
+        <SpellCard key={spell.name} spell={spell} />
+      ))}
+    </>
   )
 }
 

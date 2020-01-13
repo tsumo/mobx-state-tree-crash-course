@@ -1,9 +1,9 @@
-import { types } from 'mobx-state-tree'
+import { types, Instance } from 'mobx-state-tree'
 
-const Spell = types
+const SpellModel = types
   .model({
-    name: '',
-    cost: 0,
+    name: types.optional(types.string, ''),
+    cost: types.optional(types.number, 0),
   })
   .actions(self => ({
     setName(newName: string) {
@@ -15,4 +15,7 @@ const Spell = types
     },
   }))
 
-export default Spell
+export interface ISpell extends Instance<typeof SpellModel> {}
+export type TSpell = typeof SpellModel.Type
+
+export default SpellModel
