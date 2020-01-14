@@ -1,4 +1,5 @@
 import React from 'react'
+import { useObserver } from 'mobx-react-lite'
 import { useRootData } from '../tools/useRootData'
 import WizardCard from './WizardCard'
 import SpellCard from './SpellCard'
@@ -13,7 +14,7 @@ const App: React.FC = () => {
     addWizard: store.addWizard,
   }))
 
-  return (
+  return useObserver(() => (
     <main className={styles.root}>
       {wizards.map(wizard => (
         <WizardCard key={wizard.name} wizard={wizard} />
@@ -30,7 +31,7 @@ const App: React.FC = () => {
         New
       </button>
     </main>
-  )
+  ))
 }
 
 export default App
