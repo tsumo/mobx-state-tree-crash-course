@@ -4,32 +4,31 @@ import { useRootData } from '../tools/useRootData'
 import WizardCard from './WizardCard'
 import SpellCard from './SpellCard'
 import useStyles from './App.style'
+import NewWizard from './NewWizard'
 
 const App: React.FC = () => {
   const styles = useStyles()
 
-  const { wizards, spells, addWizard } = useRootData(store => ({
+  const { wizards, spells } = useRootData(store => ({
     wizards: store.wizards,
     spells: store.spells,
-    addWizard: store.addWizard,
   }))
 
   return useObserver(() => (
     <main className={styles.root}>
-      {wizards.map(wizard => (
-        <WizardCard key={wizard.name} wizard={wizard} />
-      ))}
-      {spells.map(spell => (
-        <SpellCard key={spell.name} spell={spell} />
-      ))}
-      <button
-        className={styles.button}
-        onClick={() =>
-          addWizard(String(Date.now()), Math.floor(Math.random() * 100))
-        }
-      >
-        New
-      </button>
+      <div className={styles.sections}>
+        <div className={styles.section}>
+          {wizards.map(wizard => (
+            <WizardCard key={wizard.name} wizard={wizard} />
+          ))}
+        </div>
+        <div className={styles.section}>
+          {spells.map(spell => (
+            <SpellCard key={spell.name} spell={spell} />
+          ))}
+        </div>
+      </div>
+      <NewWizard />
     </main>
   ))
 }

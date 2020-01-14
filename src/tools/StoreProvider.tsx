@@ -10,6 +10,7 @@ const StoreProvider: React.FC = ({ children }) => {
   onSnapshot(store, snapshot => console.log('New snapshot', snapshot))
 
   store.addSpell('Chill Touch', 10)
+  store.addSpell('Web', 12)
   store.addWizard('Paula Undergun', 100)
 
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
